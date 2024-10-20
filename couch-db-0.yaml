@@ -1,0 +1,18 @@
+version: '2'
+
+networks:
+  byfn:
+    external:
+      name: first-network
+
+services:
+  couchdb-peer0:
+    image: couchdb:3.1.1
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    container_name: couchdb-peer0
+    ports:
+      - "5984:5984"
+    networks:
+      - byfn
